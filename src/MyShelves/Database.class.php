@@ -8,17 +8,9 @@ namespace MyShelves;
  */
 class Database extends \PDO {
     
-    private $_dbEngine = 'mysql';
-    private $_dbServer = 'localhost';
-    private $_dbUser = 'web';
-    private $_dbPassword = 'coucou';
-    private $_dbName = 'myshelves';
-    
     public function __construct() {
-        parent::__construct(
-                $this->_dbEngine.':dbname='.$this->_dbName.";host=".$this->_dbServer, 
-                $this->_dbUser, 
-                $this->_dbPassword ); 
+        $conf = FrontController::getConfig();
+        parent::__construct($conf->getDSN(), $conf->getUsername(), $conf->getPasswd());
     }
     
 }

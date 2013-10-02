@@ -1,16 +1,15 @@
 <?php
 namespace MyShelves;
-use MyShelves as MS;
 
 /**
- * Classe du FrontController pour le routage. Singleton.
+ * Classe du FrontController pour le chargement/routage. Singleton.
  * @todo
  *
  * @author Aurélie Lucet <aurelie.lucet at gmail.com>
  */
 
-class FrontController
-{
+class FrontController {
+    
     private $_defaults = array('module' => 'home', 'action' => 'index', 'iditem' => '0');
     private $_request;
     private $_response;
@@ -27,13 +26,12 @@ class FrontController
         // Chargement et configuration de Twig
         require_once __DIR__  . '/../../vendor/autoload.php'; // Composer se charge de l'autoload de Twig.
         $loader = new \Twig_Loader_Filesystem(__DIR__ . '/View');
-        //$this->_twig = new \Twig_Environment($loader, array('cache' => __DIR__ . '/../../web/cache', 
-        //                                                    'auto_reload' => true));
-        $this->_twig = new \Twig_Environment($loader, array());
+        $this->_twig = new \Twig_Environment($loader, array('cache' => __DIR__ . '/../../web/cache', 
+                                                            'auto_reload' => true));
         
         // Connexion BDD
         try {
-            $this->_db = new MS\Database();
+            $this->_db = new Database();
         } catch (PDOException $e) {
             echo $e->getTraceAsString();
         }
@@ -126,9 +124,18 @@ class FrontController
         return $this->_db;
     }
     
+    /**
+     * Chargement de la configuration
+     */
+    public static function getConfig() {
+        if (file_exists(__DIR__ . '/config.xml'))
+            return simplexml_load_file(__DIR__ . '/config.xml', 'MyShelves\Config');
+        else
+            throw new \ErrorException("Fichier de configuration src/MyShelves/config.xml absent.");
+    }
+    
     public function redirect($url) {
         $this->_response->redirect($url);
     }
 
 }
-

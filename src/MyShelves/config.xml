@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <database>
+        <dbengine>mysql</dbengine>
+        <host>localhost</host>
+        <port>3306</port>
+        <dbname>myshelves</dbname>
+        <dbuser>web</dbuser>
+        <passwd>coucou</passwd>
+    </database>
+</configuration>

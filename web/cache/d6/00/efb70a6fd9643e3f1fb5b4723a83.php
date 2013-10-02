@@ -11,6 +11,7 @@ class __TwigTemplate_d600efb70a6fd9643e3f1fb5b4723a83 extends Twig_Template
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'head' => array($this, 'block_head'),
             'content' => array($this, 'block_content'),
             'js' => array($this, 'block_js'),
         );
@@ -25,7 +26,15 @@ class __TwigTemplate_d600efb70a6fd9643e3f1fb5b4723a83 extends Twig_Template
         // line 3
         $this->displayBlock('title', $context, $blocks);
         echo " - MyShelves</title>
-    </head>
+        ";
+        // line 5
+        echo "        <link href=\"css/main.css\" type=\"text/css\" rel=\"stylesheet\" />
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+        ";
+        // line 7
+        $this->displayBlock('head', $context, $blocks);
+        // line 8
+        echo "    </head>
     
     <body>
         <h1 lang=\"en\"><a href=\"/\" title=\"Page d'accueil\">MyShelves</a></h1>
@@ -34,12 +43,12 @@ class __TwigTemplate_d600efb70a6fd9643e3f1fb5b4723a83 extends Twig_Template
         </ul>
         
         ";
-        // line 12
+        // line 16
         $this->displayBlock('content', $context, $blocks);
-        // line 15
+        // line 19
         echo "
         ";
-        // line 18
+        // line 22
         echo "        <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>
         <script type=\"text/javascript\">
             if(typeof jQuery === 'undefined') {
@@ -49,9 +58,9 @@ class __TwigTemplate_d600efb70a6fd9643e3f1fb5b4723a83 extends Twig_Template
             }
         </script>
         ";
-        // line 26
+        // line 30
         $this->displayBlock('js', $context, $blocks);
-        // line 28
+        // line 32
         echo "    </body>
 </html>
 ";
@@ -63,18 +72,23 @@ class __TwigTemplate_d600efb70a6fd9643e3f1fb5b4723a83 extends Twig_Template
         echo "Accueil";
     }
 
-    // line 12
+    // line 7
+    public function block_head($context, array $blocks = array())
+    {
+    }
+
+    // line 16
     public function block_content($context, array $blocks = array())
     {
-        // line 13
+        // line 17
         echo "        
         ";
     }
 
-    // line 26
+    // line 30
     public function block_js($context, array $blocks = array())
     {
-        // line 27
+        // line 31
         echo "        ";
     }
 
@@ -85,6 +99,6 @@ class __TwigTemplate_d600efb70a6fd9643e3f1fb5b4723a83 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  78 => 27,  75 => 26,  70 => 13,  67 => 12,  61 => 3,  55 => 28,  53 => 26,  43 => 18,  40 => 15,  26 => 3,  22 => 1,  38 => 12,  35 => 3,  29 => 2,);
+        return array (  92 => 31,  89 => 30,  84 => 17,  81 => 16,  70 => 3,  64 => 32,  62 => 30,  52 => 22,  49 => 19,  47 => 16,  37 => 8,  35 => 7,  31 => 5,  27 => 3,  23 => 1,  113 => 37,  105 => 32,  101 => 31,  96 => 28,  90 => 27,  87 => 26,  85 => 25,  80 => 23,  76 => 7,  73 => 21,  68 => 20,  65 => 19,  63 => 18,  53 => 10,  51 => 9,  45 => 5,  42 => 4,  36 => 3,  30 => 2,);
     }
 }
