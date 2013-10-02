@@ -3,3 +3,6 @@
 
 # Netbeans project files
 /nbproject
+
+# Configuration
+/src/MyShelves/config.xml
