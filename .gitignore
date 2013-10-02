@@ -1,8 +1,11 @@
 # Apache logs
-/logs
+logs
 
 # Netbeans project files
-/nbproject
+nbproject
 
 # Configuration
-/src/MyShelves/config.xml
+src/MyShelves/config.xml
+
+# Twig cache
+web/cache/*

@@ -19,7 +19,7 @@
     {% set totalItems = 0 %}
     {% for shelf in shelves %}
         <tr>
-            <td>{{ shelf.name|e }}</td>
+            <td><a href="/shelf/{{ shelf.id }}" title="Ouvrir cette étagère">{{ shelf.name|e }}</a></td>
             <td class="nb">{{ shelf.nbItems }}</td>
         </tr>
         {% set totalShelves = totalShelves + 1 %}

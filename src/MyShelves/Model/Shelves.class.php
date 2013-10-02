@@ -3,7 +3,7 @@ namespace MyShelves\Model;
 
 /**
  * Table des étagères.
- *
+ * @todo Gérer les tris
  * @author Aurélie Lucet <aurelie.lucet at gmail.com>
  */
 class Shelves extends Model {

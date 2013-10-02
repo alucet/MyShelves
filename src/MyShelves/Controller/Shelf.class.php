@@ -20,9 +20,9 @@ class Shelf extends Controller {
     public function indexAction($idShelf) {
         try {
             $shelf = new Model\Shelf($idShelf);
-            $vue = $this->_response->render('/Shelves/view.twig', array('shelf' => $shelf));
+            $vue = $this->_response->render('/shelf/index.twig', array('shelf' => $shelf));
         } catch (Exception $e) {
-            $vue = $this->_response->render('/Shelves/view.twig', array('msg' => $e->getMessage()));;
+            $vue = $this->_response->render('/shelf/index.twig', array('msg' => $e->getMessage()));;
         }
     }
     
