@@ -1,0 +1,5 @@
+# Apache logs
+/logs
+
+# Netbeans project files
+/nbproject

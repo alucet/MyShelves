@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+	ServerAdmin myaddress@mydomain.com
+
+	DocumentRoot /path/to/MyShelves/web
+	DirectoryIndex	index.php
+	ServerName   myshelves.mydomain
+	<Directory "/path/to/MyShelves/web">
+		AllowOverride All
+		Allow from All
+	</Directory>
+	ErrorLog /path/to/MyShelves/logs/apache2.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+
+</VirtualHost>

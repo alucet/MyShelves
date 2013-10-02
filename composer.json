@@ -1,0 +1,6 @@
+{
+    "name": "Aurélie Lucet <aurelie.lucet at gmail.com>",
+    "require": {
+        "twig/twig": "1.*"
+    }
+}

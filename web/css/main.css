@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'ubuntu-title';
+    src: url('./../fonts/Ubuntu-Title-webfont.eot');
+    src: url('./../fonts/Ubuntu-Title-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./../fonts/Ubuntu-Title-webfont.woff') format('woff'),
+         url('./../fonts/Ubuntu-Title-webfont.ttf') format('truetype'),
+         url('./../fonts/Ubuntu-Title-webfont.svg#ubuntu-titletitle') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+* {
+    font-family: 'Ubuntu', Liberation Sans, Verdana, sans-serif;
+    font-size: 0.95em;
+}
+
+h1 a {
+    color: #0066ff;
+    font-family: 'ubuntu-title', sans-serif;
+    font-size: 3em;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+a {
+    font-weight: bold;
+    color: #0066ff;
+}
+
+div.new-link {
+    width: 500px;
+    text-align: right;
+    padding-bottom: 1em;
+}
+div.new-link a {}
+
+table.data {
+    width: 500px;
+}
+table.data th {
+    border-bottom: 1px solid #0066ff;
+}
+table.data tbody td {
+    border-bottom: 1px solid #cccccc;
+    padding-top: 0.5em;
+}
+table.data tfoot td {
+    border-bottom: none;
+}
+table.data td.nb {
+    text-align: right;
+}

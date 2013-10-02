@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Désactive la réécriture d'URL pour les dossiers et fichiers qui existent
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirige toutes les autres requêtes sur le Front Controller (index.php)
+RewriteRule ^.*$ index.php [PT,L]

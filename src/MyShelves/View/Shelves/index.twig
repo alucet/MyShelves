@@ -1,0 +1,39 @@
+{% extends "/index.twig" %}
+{% block title %}&Eacute;tag&egrave;res{% endblock%}
+{% block head %}<link href="css/shelves.css" type="text/css" rel="stylesheet" />{% endblock %}
+{% block content %}
+<h2>Mes &eacute;tag&egrave;res</h2>
+<div class="new-link">
+    <a href="/shelf/new" title="Créer une nouvelle étagère">Ajouter...</a>
+</div>
+{% if shelves is not empty %}
+<table class="data" id="shelves">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th class="nb">&Eacute;l&eacute;ments</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% set totalShelves = 0 %}
+    {% set totalItems = 0 %}
+    {% for shelf in shelves %}
+        <tr>
+            <td>{{ shelf.name|e }}</td>
+            <td class="nb">{{ shelf.nbItems }}</td>
+        </tr>
+        {% set totalShelves = totalShelves + 1 %}
+        {% set totalItems = totalItems + shelf.nbItems %}
+    {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="nb">{{ totalShelves }} &eacute;tag&egrave;re(s)</td>
+            <td class="nb">{{ totalItems }} &eacute;l&eacute;ment(s)</td>
+        </tr>
+    </tfoot>
+</table>
+{% else %}
+<p>Aucune &eacute;tag&egrave;re.</p>
+{% endif %}
+{% endblock %}
