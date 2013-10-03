@@ -1,5 +1,6 @@
 <?php
 namespace MyShelves\Controller;
+use MyShelves\Model;
 /**
  * Contrôleur Shelf
  *
@@ -15,14 +16,15 @@ class Shelf extends Controller {
     
     /**
      * Action 'index' du contrôleur 'Shelf': affiche l'étagère sélectionnée.
+     * @todo Passer la liste des items de l'étagère
      * @param int $idShelf L'étagère à afficher.
      */
     public function indexAction($idShelf) {
         try {
             $shelf = new Model\Shelf($idShelf);
-            $vue = $this->_response->render('/shelf/index.twig', array('shelf' => $shelf));
+            $vue = $this->_response->render('/Shelf/index.twig', array('shelf' => $shelf));
         } catch (Exception $e) {
-            $vue = $this->_response->render('/shelf/index.twig', array('msg' => $e->getMessage()));;
+            $vue = $this->_response->render('/Shelf/index.twig', array('msg' => $e->getMessage()));;
         }
     }
     

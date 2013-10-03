@@ -21,7 +21,11 @@ class Shelves extends Controller {
     public function indexAction() {
         $shelvesObj = new Model\Shelves();
         $shelves = $shelvesObj->getList();
-        $vue = $this->_response->render('/Shelves/index.twig', array('shelves' => $shelves));
+        $params = array('shelves' => $shelves);
+        $ajax = $this->_request->getParam('ajax');
+        if ( $ajax === '1' )
+            $params['ajaxSourced'] = true;
+        $this->_response->render('/Shelves/index.twig', $params);
     }
     
 }
