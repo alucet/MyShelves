@@ -28,7 +28,7 @@ class FrontController {
         $loader = new \Twig_Loader_Filesystem(__DIR__ . '/View');
         $this->_twig = new \Twig_Environment($loader, array('cache' => __DIR__ . '/../../web/cache', 
                                                             'auto_reload' => true));
-        
+                                                        $this->_twig->clearCacheFiles();
         // Connexion BDD
         try {
             $this->_db = new Database();

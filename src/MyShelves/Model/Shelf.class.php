@@ -66,8 +66,4 @@ class Shelf extends Model {
         $this->_nbItems = filter_var($nb, FILTER_VALIDATE_INT, array('min_range' => 0));
     }
     
-    public function hydrate($id, $name, $nbItems) {
-        
-    }
-    
 }

@@ -2,7 +2,7 @@
     <head>
         <title>{% block title %}Accueil{% endblock %} - MyShelves</title>
         {# TODO CSS reset #}
-        <link href="css/main.css" type="text/css" rel="stylesheet" />
+        <link href="/css/main.css" type="text/css" rel="stylesheet" />
         <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
         {% block head %}{% endblock %}
     </head>
@@ -18,16 +18,15 @@
         {% endblock %}
 
         {#    /** Chargement Javascript:
-                * Si la version du CDN de Google ne charge pas, charger la version locale. */ #}
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+                * Si la version du CDN ne charge pas, charger la version locale. */ #}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script type="text/javascript">
             if(typeof jQuery === 'undefined') {
-                //<![CDATA[
-                document.write("<script src='/js/jquery-1.10.2.min.js' type='text/javascript'><\/script>");
-                //]]>
+                document.write('<script src="' + '/js/jquery-1.10.2.min.js' + '" type="text/javascript" />');
             }
         </script>
-        {% block js %}
+        {% block scripts %}
+        
         {% endblock %}
     </body>
 </html>
