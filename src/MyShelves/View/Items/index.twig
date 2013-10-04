@@ -1,0 +1,40 @@
+{% extends ajaxSourced ? "/dummy.twig" : "/index.twig" %}
+{% if not ajaxSourced %}
+    {% block title %}&Eacute;l&eacute;ments{% endblock %}
+{% endif %}
+{% block head %}<link href="css/lists.css" type="text/css" rel="stylesheet" />{% endblock %}
+
+{% block content %}
+    {% if not ajaxSourced %}
+        <h2>Mes &eacute;l&eacute;ments</h2>
+        <div class="new-link">
+            <a href="/item/new" title="Créer un nouvel élément">Ajouter...</a>
+        </div>
+    {% endif %}
+
+    {% if items is not empty %}
+        <table class="data" id="items">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% set totalItems = 0 %}
+            {% for item in items %}
+                <tr>
+                    <td><a href="/item/{{ item.id }}" title="Ouvrir cet élément">{{ item.title|e }}</a></td>
+                </tr>
+                {% set totalItems = totalItems + 1 %}
+            {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="nb">{{ totalItems }} &eacute;l&eacute;ment(s)</td>
+                </tr>
+            </tfoot>
+        </table>
+    {% else %}
+        <p>Aucun &eacute;l&eacute;ment.</p>
+    {% endif %}
+{% endblock %}
