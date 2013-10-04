@@ -17,7 +17,7 @@ class Home extends Controller {
      * @todo 
      */
     public function indexAction() {
-        $vue = $this->_response->render('/Home/index.twig', array());
+        $vue = $this->_response->render('/Home.index.twig', array());
     }
     
 }

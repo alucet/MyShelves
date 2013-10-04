@@ -1,0 +1,35 @@
+{% extends "/index.twig" %}
+{% block title %}&Eacute;diteur{% endblock %}
+{% block head %}
+    <link href="/css/lists.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block content %}
+    <h2>&Eacute;diteur <span>{{ editor.name|e }}</span></h2>
+    {% if msg is not empty %}
+        <div class="message">{{ msg|e|nl2br }}</div>
+    {% endif %}
+    <div id="item-view">
+        <div class="edit">
+            <button accesskey="e" id="item-view-edit" title="Modifier l'éditeur">Modifier...</button>
+        </div>
+        <span class="label">Nom:</span>{{ editor.name|e }}
+    </div>
+    <div id="item-edit">
+        <h3>Modifier l'&eacute;tag&egrave;re:</h3>
+        <form method="POST" action="/editor/edit/{{ editor.id }}" title="Modifier les informations de cet élément">
+            <fieldset>
+                <input type="hidden" name="id" id="id" value="{{ editor.id }}" />
+                <input type="hidden" name="controller" id="controller" value="editor" />
+                <label>Nom:</label>
+                <input type="text" name="name" id="name" value="{{ editor.name|e }}" title="Nom de l'éditeur." />
+            </fieldset>
+        </form>
+    </div>
+    <div id="related-items-list">
+        <h3>&Eacute;léments publi&eacute;s par cet &eacute;diteur:</h3>
+        
+    </div>
+{% endblock content %}
+{% block scripts %}
+    <script type="text/javascript" src="/js/itemEdit.js"></script>
+{% endblock scripts %}

@@ -18,14 +18,22 @@ class Items extends Controller {
      * Action 'index' du contrôleur 'Items': liste d'éléments.
      * @todo 
      */
-    public function indexAction($idShelf) {
+    public function indexAction() {
         $itemsObj = new Model\Items();
-        $items = $itemsObj->getList($idShelf);
+        
+        $controller = $this->_request->getParam('controller');
+        $id = $this->_request->getParam('id');
+        
+        if (isset($controller) && isset($id))
+            $items = $itemsObj->getList(array($controller => $id));
+        else
+            $items = $itemsObj->getList();
+        
         $params = array('items' => $items);
         $ajax = $this->_request->getParam('ajax');
         if ( $ajax === '1' )
             $params['ajaxSourced'] = true;
-        $this->_response->render('/Items/index.twig', $params);
+        $this->_response->render('/Items.index.twig', $params);
     }
     
 }

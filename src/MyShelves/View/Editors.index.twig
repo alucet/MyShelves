@@ -1,0 +1,45 @@
+{% extends ajaxSourced ? "/dummy.twig" : "/index.twig" %}
+{% if not ajaxSourced %}
+    {% block title %}&Eacute;diteurs{% endblock%}
+{% endif %}
+{% block head %}<link href="css/lists.css" type="text/css" rel="stylesheet" />{% endblock %}
+
+{% block content %}
+    {% if not ajaxSourced %}
+        <h2>&Eacute;diteurs</h2>
+        <div class="new-link">
+            <a href="/editor/new" title="Cr&eacute;er un nouvel &eacute;diteur">Ajouter...</a>
+        </div>
+    {% endif %}
+
+    {% if editors is not empty %}
+        <table class="data" id="editors">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th class="nb">&Eacute;l&eacute;ments</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% set totalEditors = 0 %}
+            {% set totalItems = 0 %}
+            {% for editor in editors %}
+                <tr>
+                    <td><a href="/editor/{{ editor.id }}" title="Ouvrir cet &eacute;diteur">{{ editor.name }}</a></td>
+                    <td class="nb">{{ editor.nbItems }}</td>
+                </tr>
+                {% set totalEditors = totalEditors + 1 %}
+                {% set totalItems = totalItems + editor.nbItems %}
+            {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="nb">{{ totalEditors }} &eacute;diteur(s)</td>
+                    <td class="nb">{{ totalItems }} &eacute;l&eacute;ment(s)</td>
+                </tr>
+            </tfoot>
+        </table>
+    {% else %}
+        <p>Aucun &eacute;diteur.</p>
+    {% endif %}
+{% endblock %}

@@ -1,3 +1,32 @@
-table#shelves th.nb {
+/*
+Tableaux de listes
+*/
+table.data {
+    width: 500px;
+    border-collapse: collapse;
+}
+table.data th {
+    border-bottom: 1px solid #0066ff;
+}
+table.data th.nb {
     width: 15%;
+}
+table.data tbody td {
+    border-bottom: 1px solid #cccccc;
+    line-height: 1.8em;
+}
+table.data tbody td a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+table.data tbody td a:hover {
+    background-color: #eeeeff;
+}
+table.data tfoot td {
+    border-bottom: none;
+    font-size: 0.9em;
+}
+table.data td.nb {
+    text-align: right;
 }

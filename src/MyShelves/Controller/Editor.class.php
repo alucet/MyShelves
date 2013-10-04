@@ -2,11 +2,11 @@
 namespace MyShelves\Controller;
 use MyShelves\Model;
 /**
- * Contrôleur Shelf
+ * Contrôleur Editor
  *
  * @author Aurélie Lucet <aurelie.lucet at gmail.com>
  */
-class Shelf extends Controller {
+class Editor extends Controller {
     
     protected $_idShelf;
     
@@ -15,16 +15,16 @@ class Shelf extends Controller {
     }
     
     /**
-     * Action 'index' du contrôleur 'Shelf': affiche l'étagère sélectionnée.
-     * @todo Passer la liste des items de l'étagère
+     * Action 'index' du contrôleur 'Editor': affiche l'éditeur sélectionné.
+     * @todo Passer la liste des items de l'éditeur
      * @param int $idShelf L'étagère à afficher.
      */
-    public function indexAction($idShelf) {
+    public function indexAction($idEditor) {
         try {
-            $shelf = new Model\Shelf($idShelf);
-            $vue = $this->_response->render('/Shelf.index.twig', array('shelf' => $shelf));
+            $editor = new Model\Editor($idEditor);
+            $this->_response->render('/Editor.index.twig', array('editor' => $editor));
         } catch (Exception $e) {
-            $vue = $this->_response->render('/Shelf.index.twig', array('msg' => $e->getMessage()));;
+            $this->_response->render('/Editor.index.twig', array('msg' => $e->getMessage()));;
         }
     }
     

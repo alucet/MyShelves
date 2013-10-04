@@ -1,7 +1,7 @@
 {% extends "/index.twig" %}
 {% block title %}&Eacute;tag&egrave;re{% endblock %}
 {% block head %}
-    <link href="/css/shelves.css" type="text/css" rel="stylesheet" />
+    <link href="/css/lists.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 {% block content %}
     <h2>&Eacute;tag&egrave;re <span>{{ shelf.name|e }}</span></h2>
@@ -19,6 +19,7 @@
         <form method="POST" action="/shelf/edit/{{ shelf.id }}" title="Modifier les informations de cet élément">
             <fieldset>
                 <input type="hidden" name="id" id="id" value="{{ shelf.id }}" />
+                <input type="hidden" name="controller" id="controller" value="shelf" />
                 <label>Nom:</label>
                 <input type="text" name="name" id="name" value="{{ shelf.name|e }}" title="Nom de l'étagère." />
             </fieldset>

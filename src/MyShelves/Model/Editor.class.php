@@ -6,7 +6,7 @@ namespace MyShelves\Model;
  * @todo Enregistrement en BDD
  * @author Aurélie Lucet <aurelie.lucet at gmail.com>
  */
-class Shelf extends Model {
+class Editor extends Model {
     
     private $_id;
     private $_name;
@@ -27,19 +27,19 @@ class Shelf extends Model {
         $id = filter_var($id, FILTER_VALIDATE_INT, array('min_range' => 1));
         if ($id)
             $req = $this->_db->query("
-                SELECT shelf.id_shelf, name_shelf, COUNT(item.id_shelf) AS nb
-                FROM shelf
+                SELECT editor.id_editor, name_editor, COUNT(item.id_editor) AS nb
+                FROM editor
                 LEFT JOIN item
-                    ON shelf.id_shelf = item.id_shelf
-                WHERE shelf.id_shelf = $id
-                GROUP BY shelf.id_shelf, name_shelf", \PDO::FETCH_ASSOC);
+                    ON editor.id_editor = item.id_editor
+                WHERE editor.id_editor = $id
+                GROUP BY editor.id_editor, name_editor", \PDO::FETCH_ASSOC);
         if ($req !== FALSE) {
             $row = $req->fetch();
-            $this->setId($row['id_shelf']);
-            $this->setName($row['name_shelf']);
+            $this->setId($row['id_editor']);
+            $this->setName($row['name_editor']);
             $this->_setNbItems($row['nb']);
         } else
-            throw new \InvalidArgumentException('Cette étagère n\'existe pas. Identifiant inconnu.');
+            throw new \InvalidArgumentException('Cet éditeur n\'existe pas. Identifiant inconnu.');
     }
     
     public function getId() {

@@ -11,8 +11,8 @@ class Item extends Model {
     
     private $_id;
     private $_title;
-    private $_idEditor;
-    private $_idShelf;
+    private $_editor;
+    private $_shelf;
     private $_notes;
     private $_rating = 0;
     private $_completedOn;
@@ -42,8 +42,10 @@ class Item extends Model {
             $row = $req->fetch();
             $this->setId($row['id_item']);
             $this->setTitle($row['title_item']);
-            $this->setIdEditor($row['id_editor']);
-            $this->setIdShelf($row['id_shelf']);
+            if ($row['id_editor'])
+                $this->setEditor(new Editor($row['id_editor']));
+            if ($row['id_shelf'])
+                $this->setShelf(new Shelf($row['id_shelf']));
             $this->setNotes($row['notes_item']);
             $this->setRating($row['rating_item']);
             $this->setCompletedOn($row['completedon_item']);
@@ -65,23 +67,25 @@ class Item extends Model {
     }
     
     public function setTitle($title) {
-        $this->_title = trim(filter_var($title, FILTER_SANITIZE_STRING));
+        $this->_title = trim(filter_var($title, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
     }
     
-    public function getIdEditor() {
-        return $this->_idEditor;
+    public function getEditor() {
+        return $this->_editor;
     }
     
-    public function setIdEditor($id) {
-        $this->_idEditor = filter_var($id, FILTER_VALIDATE_INT, array('min_range' => 1));
+    public function setEditor(Editor $editor) {
+        if (isset($editor))
+            $this->_editor = $editor;
     }
     
-    public function getIdShelf() {
-        return $this->_idShelf;
+    public function getShelf() {
+        return $this->_shelf;
     }
     
-    public function setIdShelf($id) {
-        $this->_idShelf = filter_var($id, FILTER_VALIDATE_INT, array('min_range' => 1));
+    public function setShelf(Shelf $shelf) {
+        if (isset($shelf))
+            $this->_shelf = $shelf;
     }
     
     public function getNotes() {
@@ -89,7 +93,7 @@ class Item extends Model {
     }
     
     public function setNotes($notesTxt) {
-        $this->_notes = trim(filter_var($notesTxt, FILTER_SANITIZE_STRING));
+        $this->_notes = trim(filter_var($notesTxt, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
     }
     
     public function getRating() {

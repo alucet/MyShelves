@@ -15,11 +15,30 @@ class Items extends Model {
         $this->_db = parent::getDb();
     }
     
-    public function getList($idShelf, $sort = 'ASC') {
+    /**
+     * Retourne un tableau d'éléments.
+     * @param array $filters Filtre la liste des éléments selon certains critères:
+     *                          éléments d'un certain emplacement, d'un éditeur précis...
+     *                          'controleur' => id
+     *                          Ex: 'shelf' => 3 : affiche les éléments de l'étagère n°3.
+     * @param string $sort
+     * @return array Tableau d'objets Item chargés.
+     */
+    public function getList(array $filters, $sort = 'ASC') {
+        
+        for ($i = 0; $i == sizeof($filters)-1; $i++) {
+            if ($i == 0)
+                $filtersString .= " WHERE ";
+            else
+                $filtersString .= " AND ";
+            $key = array_keys($filters)[$i];
+            $filtersString .= 'id_' . $key . ' = ' . $filters[$key];
+        }
+        
         $req = $this->_db->query("
             SELECT id_item
             FROM item
-            ".($idShelf?"WHERE id_shelf = $idShelf":'')."
+            $filtersString
             ORDER BY title_item $sort", \PDO::FETCH_ASSOC);
         if ($req !== FALSE) {
             foreach ($req as $row) {

@@ -2,11 +2,11 @@
 namespace MyShelves\Controller;
 use MyShelves\Model;
 /**
- * Contrôleur Shelves
+ * Contrôleur Editors
  * @todo Gestion des pages
  * @author Aurélie Lucet <aurelie.lucet at gmail.com>
  */
-class Shelves extends Controller {
+class Editors extends Controller {
     
     protected $_page = 1;
     
@@ -15,17 +15,17 @@ class Shelves extends Controller {
     }
 
     /**
-     * Action 'index' du contrôleur 'Shelves': liste des étagères existantes.
+     * Action 'index' du contrôleur 'Editors': liste des éditeurs existants.
      * @todo prévoir Nom de l'étagère + nombre d'items
      */
     public function indexAction() {
-        $shelvesObj = new Model\Shelves();
-        $shelves = $shelvesObj->getList();
-        $params = array('shelves' => $shelves);
+        $editorsObj = new Model\Editors();
+        $editors = $editorsObj->getList();
+        $params = array('editors' => $editors);
         $ajax = $this->_request->getParam('ajax');
         if ( $ajax === '1' )
             $params['ajaxSourced'] = true;
-        $this->_response->render('/Shelves.index.twig', $params);
+        $this->_response->render('/Editors.index.twig', $params);
     }
     
 }
