@@ -1,0 +1,49 @@
+/*
+* Formulaires
+*/
+#item-view .edit, 
+#item-edit .edit {
+    width: 100%;
+    text-align: right;
+}
+
+#item-view .edit button, 
+#item-edit .edit button {
+    padding: 0 15px;
+    background-color: #ffffff;
+    border-style: none;
+}
+
+label, span.label {
+    display: inline-block;
+    margin-left: 50px;
+    width:190px;
+}
+
+label.mandatory span {
+    border-bottom: 1px dotted;
+}
+
+input[type=text] {
+    border: 1px solid #cccccc;
+    width: 250px;
+}
+
+input.mandatory[type=text] {
+    border: 1px solid #666666;
+}
+
+input[type=text]:focus {
+    background-color: #eeeeff;
+}
+
+fieldset {
+    margin: 0;
+    padding: 5px 0;
+}
+
+#item-view, 
+#item-edit, 
+#related-items-list {
+    margin-top: 4em;
+}

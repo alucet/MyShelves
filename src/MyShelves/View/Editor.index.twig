@@ -2,6 +2,7 @@
 {% block title %}&Eacute;diteur{% endblock %}
 {% block head %}
     <link href="/css/lists.css" type="text/css" rel="stylesheet" />
+    <link href="/css/forms.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 {% block content %}
     <h2>&Eacute;diteur <span>{{ editor.name|e }}</span></h2>
@@ -10,7 +11,7 @@
     {% endif %}
     <div id="item-view">
         <div class="edit">
-            <button accesskey="e" id="item-view-edit" title="Modifier l'éditeur">Modifier...</button>
+            <button accesskey="e" id="item-view-edit" title="Modifier l'&eacute;diteur">Modifier...</button>
         </div>
         <span class="label">Nom:</span>{{ editor.name|e }}
     </div>
@@ -20,13 +21,16 @@
             <fieldset>
                 <input type="hidden" name="id" id="id" value="{{ editor.id }}" />
                 <input type="hidden" name="controller" id="controller" value="editor" />
-                <label>Nom:</label>
-                <input type="text" name="name" id="name" value="{{ editor.name|e }}" title="Nom de l'éditeur." />
+                <label class="mandatory" title="Obligatoire"><span>Nom:</span></label>
+                <input type="text" name="name" id="name" value="{{ editor.name|e }}" title="Nom de l'éditeur. Obligatoire." maxlength="25" class="mandatory" />
             </fieldset>
         </form>
+        <div class="edit">
+            <button accesskey="q" id="item-edit-cancel" title="Quitter ce formulaire.">Annuler</button>
+        </div>
     </div>
     <div id="related-items-list">
-        <h3>&Eacute;léments publi&eacute;s par cet &eacute;diteur:</h3>
+        <h3>&Eacute;l&eacute;ments publi&eacute;s par cet &eacute;diteur:</h3>
         
     </div>
 {% endblock content %}

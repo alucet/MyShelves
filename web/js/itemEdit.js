@@ -19,5 +19,16 @@ $(function() {
     else
         $('#related-items-list').hide();
     
+    // Affichage du formulaire sur le bouton "Modifier..."
+    $('#item-view-edit').click(function() {
+        $('#item-edit').show();
+        $('#item-view').hide();
+    });
+    
+    // Disparition du formulaire sur le bouton "Annuler"
+    $('#item-edit-cancel').click(function() {
+        $('#item-edit').hide();
+        $('#item-view').show();
+    });
     
 });

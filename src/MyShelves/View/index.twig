@@ -8,16 +8,25 @@
     </head>
     
     <body>
-        <h1 lang="en"><a href="/" title="Page d'accueil">MyShelves</a></h1>
-        <ul title="Menu principal" id="main-menu">
-            <li><a href="/shelves" title="Gestion des &eacute;tag&egrave;res">&Eacute;tag&egrave;res</a></li>
-            <li><a href="/editors" title="Gestion des &eacute;diteurs">&Eacute;diteurs</a></li>
-        </ul>
         
+        <header>
+            <h1 lang="en"><a href="/" title="Page d'accueil">MyShelves</a></h1>
+        </header>
+            
+        <nav>
+            <ul title="Menu principal" id="main-menu">
+                <li><a href="/shelves" title="Gestion des &eacute;tag&egrave;res">&Eacute;tag&egrave;res</a></li>
+                <li><a href="/editors" title="Gestion des &eacute;diteurs">&Eacute;diteurs</a></li>
+            </ul>
+        </nav>
+        
+        <section id="main-content">
         {% block content %}
         
         {% endblock %}
+        </section>
 
+        <footer></footer>
         {#    /** Chargement Javascript:
                 * Si la version du CDN ne charge pas, charger la version locale. */ #}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

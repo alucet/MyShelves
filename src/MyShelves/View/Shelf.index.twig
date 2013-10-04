@@ -2,6 +2,7 @@
 {% block title %}&Eacute;tag&egrave;re{% endblock %}
 {% block head %}
     <link href="/css/lists.css" type="text/css" rel="stylesheet" />
+    <link href="/css/forms.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 {% block content %}
     <h2>&Eacute;tag&egrave;re <span>{{ shelf.name|e }}</span></h2>
@@ -10,7 +11,7 @@
     {% endif %}
     <div id="item-view">
         <div class="edit">
-            <button accesskey="e" id="item-view-edit" title="Modifier l'étagère">Modifier...</button>
+            <button accesskey="e" id="item-view-edit" title="Modifier l'&eacute;tag&egrave;re">Modifier...</button>
         </div>
         <span class="label">Nom:</span>{{ shelf.name|e }}
     </div>
@@ -20,13 +21,16 @@
             <fieldset>
                 <input type="hidden" name="id" id="id" value="{{ shelf.id }}" />
                 <input type="hidden" name="controller" id="controller" value="shelf" />
-                <label>Nom:</label>
-                <input type="text" name="name" id="name" value="{{ shelf.name|e }}" title="Nom de l'étagère." />
+                <label class="mandatory" title="Obligatoire"><span>Nom:</span></label>
+                <input type="text" name="name" id="name" value="{{ shelf.name|e }}" title="Nom de l'étagère. Obligatoire." maxlength="20" class="mandatory" />
             </fieldset>
         </form>
+        <div class="edit">
+            <button accesskey="q" id="item-edit-cancel" title="Quitter ce formulaire">Annuler</button>
+        </div>
     </div>
     <div id="related-items-list">
-        <h3>&Eacute;léments dans cette &eacute;tag&egrave;re:</h3>
+        <h3>&Eacute;l&eacute;ments dans cette &eacute;tag&egrave;re:</h3>
         
     </div>
 {% endblock content %}
