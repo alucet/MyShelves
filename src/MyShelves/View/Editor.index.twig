@@ -13,20 +13,22 @@
         <div class="edit">
             <button accesskey="e" id="item-view-edit" title="Modifier l'&eacute;diteur">Modifier...</button>
         </div>
-        <span class="label">Nom:</span>{{ editor.name|e }}
+        <span class="label">Nom:</span><span id="item-view-name">{{ editor.name|e }}</span>
     </div>
     <div id="item-edit">
         <h3>Modifier l'&eacute;tag&egrave;re:</h3>
-        <form method="POST" action="/editor/edit/{{ editor.id }}" title="Modifier les informations de cet élément">
+        <form method="POST" id="item-edit-form" title="Modifier les informations de cet élément">
             <fieldset>
                 <input type="hidden" name="id" id="id" value="{{ editor.id }}" />
                 <input type="hidden" name="controller" id="controller" value="editor" />
+                <input type="hidden" name="list-controller" id="list-controller" value="editors" />
                 <label class="mandatory" title="Obligatoire"><span>Nom:</span></label>
                 <input type="text" name="name" id="name" value="{{ editor.name|e }}" title="Nom de l'éditeur. Obligatoire." maxlength="25" class="mandatory" />
             </fieldset>
         </form>
         <div class="edit">
             <button accesskey="q" id="item-edit-cancel" title="Quitter ce formulaire.">Annuler</button>
+            <button accesskey="v" id="item-edit-send" title="Soumettre ce formulaire.">Enregistrer</button>
         </div>
     </div>
     <div id="related-items-list">

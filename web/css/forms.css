@@ -37,9 +37,27 @@ input[type=text]:focus {
     background-color: #eeeeff;
 }
 
+input.error {
+    border: 1px solid #cc0000;
+    background-color: #ffcccc;
+}
+
 fieldset {
     margin: 0;
     padding: 5px 0;
+}
+
+#item-edit-send {
+    background-color: #0066ff ! important;
+    color: #ffffff;
+    /*font-family: 'ubuntu-title', sans-serif;*/
+    font-size: 1.2em;
+    padding: 5px 15px ! important;
+    border-radius: 5px;
+    text-decoration: none;
+}
+#item-edit-cancel {
+    font-size: 0.8em;
 }
 
 #item-view, 
